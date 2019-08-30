@@ -1,19 +1,26 @@
-import falcon
+from flask import Flask
+from flask_restful import Api
+from flask_migrate import Migrate
+
+from applications.db import db
+from applications.gamma_api.challenge import ChallengeResource
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:1234@mysql:3306/dbproject'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['PROPAGATE_EXCEPTIONS'] = True
+app.secret_key = 'skjdhgvksdvkghvkhg'
+api = Api(app)
+
+db.init_app(app)
+
+migrate = Migrate(app, db)
 
 
-class QuoteResource:
-    def on_get(self, req, resp):
-        """Handles GET requests"""
-        quote = {
-            'quote': (
-                "I've always been more interested in "
-                "the future than in the past."
-            ),
-            'author': 'Grace Hopper'
-        }
-
-        resp.media = quote
+@app.before_first_request
+def create_tables():
+    pass
+    db.create_all()
 
 
-api = falcon.API()
-api.add_route('/', QuoteResource())
+api.add_resource(ChallengeResource, '/challenges')

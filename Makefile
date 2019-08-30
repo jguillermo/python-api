@@ -25,14 +25,10 @@ install: ## build image to dev: make build
 	docker build -f container/doc/Dockerfile -t $(IMAGE_RAML) container/doc/
 
 build: ## build image to dev: make build
-	cp app/requirements.txt container/dev/resources/requirements.txt
-	docker build -f container/dev/Dockerfile -t $(IMAGE_DEV) container/dev/
-	rm -f container/dev/resources/requirements.txt
-
+	docker build -f container/dev/Dockerfile -t $(IMAGE_DEV) .
 
 
 up: ## up docker containers: make up
-	make set-config-local
 	docker-compose -f container/docker-compose.yml up -d
 	@make status
 
@@ -53,12 +49,9 @@ restart: ## Restart all containers, use me with: make restart
 	make start
 	make status
 
-ssh: ## Connect to container for ssh protocol : make ssh
-	docker exec -it $(CONTAINER_NAME) bash
 
-set-config-local: ## copia el archivo config/env.local al config : make set-config-local
-	#cp ${PWD}/app/config/config.env.local ${PWD}/app/config/config.env
-	mkdir -p ${PWD}/app/files && chmod 777 ${PWD}/app/files
+
+
 
 log: ## Show container logs make : make log
 	docker-compose -f container/docker-compose.yml logs -f
@@ -66,38 +59,50 @@ log: ## Show container logs make : make log
 log-backend: ## Show container logs make : make log
 	docker-compose -f container/docker-compose.yml logs -f backend
 
-install-lib: ## Connect to container for ssh protocol install with pip: make install-lib
-	docker exec -it $(CONTAINER_NAME) pip-3.5 install $(LIB)
+
 
 tests: ## Run the unitTests : make tests
-	@docker run --rm -t -v $(PWD)/app:/app:rw --entrypoint /resources/test.sh $(IMAGE_DEV)
-	#@sudo chown -R $(USER):$(USER) $(PWD)/app/*
+	@docker run --rm -t -v $(PWD)/application:/application:rw --entrypoint /resources/test.sh $(IMAGE_DEV)
 
 
 ## Documentacion##
 raml-generate: ## build image to raml: make build-raml
 	#docker build -f container/doc/Dockerfile -t $(IMAGE_RAML) container/doc/
-	docker run --rm -v $(PWD):/app $(IMAGE_RAML) -i /app/doc/gamma/api.raml -o /app/app/doc/gamma.html
-	docker run --rm -v $(PWD):/app $(IMAGE_RAML) --theme raml2html-markdown-theme -i /app/doc/gamma/api.raml -o /app/DOC.md
+	docker run --rm -v $(PWD):/application $(IMAGE_RAML) -i /application/doc/gamma/api.raml -o /application/application/doc/gamma.html
+	docker run --rm -v $(PWD):/application $(IMAGE_RAML) --theme raml2html-markdown-theme -i /application/doc/gamma/api.raml -o /application/DOC.md
 
 raml-live: ## build image to raml: make raml-live
 	#docker rm -f api-designer
 	docker run -d --name api-designer -v $(PWD)/doc:/raml -p 3000:3000 loostro/api-designer:0.3.2
 	open http://localhost:3000/
 
+## Console Backend DB##
+console: ## Connect to container for ssh protocol : make console a='pwd'
+	docker exec -it $(CONTAINER_NAME) ${a}
+
+ssh: ## Connect to container for ssh protocol : make ssh
+	make console a='bash'
+
+install-lib: ## Connect to container for ssh protocol install with pip: make install-lib
+	make console a='pip install $(LIB)'
+
+freeze: ## Connect to container for ssh protocol install with pip: make install-lib
+	make console a='pip freeze'
 
 ## Migrate DB##
-migrate: ## Execute migrate : make migrate
-	docker exec $(CONTAINER_NAME) /resources/alembic.sh upgrade head
+db-upgrade: ## Execute migrate db : make db-upgrade
+	make console a='flask db upgrade'
 
-migrate-info: ## Execute migrate : make migrate
-	docker exec $(CONTAINER_NAME) /resources/alembic.sh upgrade head --sql
+db-upgrade-info: ## show history changes : make db-upgrade-info
+	make console a='flask db upgrade head --sql'
 
-revision: ## Create a new revision : make revision
-	docker exec $(CONTAINER_NAME) /resources/alembic.sh revision --autogenerate -m "migrate"
-	#@sudo chown -R $(USER) $(PWD)/app/alembic/versions
+db-migrate: ## Create a new migrate : make revision
+	make console a='flask db migrate'
 
-dump: ## Execute migrate : make migrate
+db-revision: ## Create a new revision. file empty : make revision
+	make console a='flask db revision'
+
+db-dump: ## create a database.sql file : make migrate
 	docker exec $(CONTAINER_DB_NAME) /tmp/dump.sh
 
 
