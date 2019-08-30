@@ -1,0 +1,39 @@
+{
+  "error": false,
+  "code": 2000,
+  "message": "SUCCESS",
+  "data": [
+    {
+      "id": "a91488b0-fd5c-4433-8337-9fae2133558e",
+      "total": 2,
+      "progress": 2,
+      "seen": true,
+      "status": "completed",
+      "challenge_id": "12341608-e65a-44da-baa2-df6ce61ea947"
+    },
+    {
+      "id": "ceff23b5-c168-4611-a6a4-6cdaa215fde3",
+      "total": 4,
+      "progress": 4,
+      "seen": false,
+      "status": "completed",
+      "challenge_id": "698ee3ce-ca6f-4bda-8e33-a985d2b01b48"
+    },
+    {
+      "id": "e1e23009-15c1-44e1-b718-50047a3a5aed",
+      "total": 2,
+      "progress": 2,
+      "seen": false,
+      "status": "completed",
+      "challenge_id": "3c7e499c-5e5a-4fb5-a3f6-af31f273b2e1"
+    },
+    {
+      "id": "e6472069-59b6-481b-88bf-596471cba196",
+      "total": 3,
+      "progress": 2,
+      "seen": "",
+      "status": "in_progress",
+      "challenge_id": "0d3bddf6-3aed-4eea-a03e-b97279b7fc33"
+    }
+  ]
+}

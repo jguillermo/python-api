@@ -1,0 +1,11 @@
+{
+    "point":100,
+    "stock":15,
+    "expiration":"2019-08-23",
+    "title":"entrada al cine prime",
+    "image":"https://storage.googleapis.com/flash-storage-pre-api/gamma/reward/d637db1f-e928-4b58-afbc-4758b5cee9c1.jpg",
+    "description":"solo para alumno de primer ciclo",
+    "requirement":"estar matriculado a mate 1",
+    "condition":"l-v 8-9 am",
+    "map":"120,13534"
+}

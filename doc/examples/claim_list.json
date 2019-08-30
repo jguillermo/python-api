@@ -1,0 +1,21 @@
+{
+    "error": false,
+    "code": 2000,
+    "message": "SUCCESS",
+    "data": [
+        {
+            "id": "308c7fe4-2032-4178-ae24-773e67f53e99",
+            "code": "hbdasjy",
+            "reward_id": "2a0bf757-4c67-4b9c-ad38-a963f4c2d94f",
+            "status": "claimed",
+            "expired": 0
+        },
+        {
+            "id": "308c7fe4-2032-4178-ae24-773ef7f53e99",
+            "code": "vdcsehd",
+            "reward_id": "2a0bf757-4c67-4b9c-ad38-a963f4c2d94f",
+            "status": "pending",
+            "expired": 13
+        }
+    ]
+}

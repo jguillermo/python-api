@@ -1,0 +1,33 @@
+{
+    "error": false,
+    "code": 2000,
+    "message": "SUCCESS",
+    "data": [
+        {
+            "id": "265bee47-7fd6-4709-8773-b346c6e0b591",
+            "point": 100,
+            "stock": 15,
+            "expiration": "2019-08-23 00:00:00",
+            "title": "entrada al cine",
+            "image": "https://storage.googleapis.com/flash-storage-pre-api/gamma/reward/d637db1f-e928-4b58-afbc-4758b5cee9c1.jpg",
+            "description": "solo para alumno de primer ciclo",
+            "requirement": "estar matriculado a mate 2",
+            "condition": "l-v 8-9 am",
+            "map": "sadasd,sdfsdf",
+            "current_date": "2019-08-02 14:25:08"
+        },
+        {
+            "id": "bb9697a5-ea0f-4116-b03a-d71efc5ec459",
+            "point": 100,
+            "stock": 15,
+            "expiration": "2019-08-23 00:00:00",
+            "title": "entrada al cine prime",
+            "image": "https://storage.googleapis.com/flash-storage-pre-api/gamma/reward/d637db1f-e928-4b58-afbc-4758b5cee9c1.jpg",
+            "description": "solo para alumno de primer ciclo",
+            "requirement": "estar matriculado a mate 1",
+            "condition": "l-v 8-9 am",
+            "map": "sadasd,sdfsdf",
+            "current_date": "2019-08-02 14:25:08"
+        }
+    ]
+}

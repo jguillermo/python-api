@@ -1,0 +1,9 @@
+{
+    "error": false,
+    "code": 2000,
+    "message": "SUCCESS",
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiYjNjNDIyZWMtZGVlZS01NDg5LWFhMjQtMDU4NDRjNjRkMTRkIiwiY29kZSI6IlUxNzQ5MzRAVVRQLkVEVS5QRSIsInR5cGUiOiJzdHVkZW50In19.SSTPwSFQyJ1-GTMZrOUrahaJSBJr8gdSzp29tC4iJTQ",
+        "refresh": "258ba76c-404f-48de-9317-b04280a3e063"
+    }
+}

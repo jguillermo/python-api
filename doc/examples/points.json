@@ -1,0 +1,11 @@
+{
+    "error": false,
+    "code": 2000,
+    "message": "SUCCESS",
+    "data": {
+        "total": 210,
+        "level_max": 499,
+        "level_min": 0,
+        "level": 1
+    }
+}
