@@ -1,16 +1,18 @@
-class RepositoryNotFound(Exception):
-    pass
+
 
 
 class AppError(Exception):
     """Clase base para excepciones en el módulo."""
-    pass
 
-class BadRequest(Exception):
+    def __init__(self, *args: object, **kwargs: object) -> None:
+        super().__init__(*args, **kwargs)
+
+
+class BadRequest(AppError):
     """Clase base para excepciones en el módulo."""
     pass
 
-class UnauthorizedRequest(Exception):
+class UnauthorizedRequest(AppError):
     """Clase base para excepciones en el módulo."""
     pass
 
