@@ -11,8 +11,8 @@ class ChallengeMockRepository:
     def ok() -> ChallengeRepository:
         repository = mock.create_autospec(ChallengeRepository)
         repository.find_all.return_value = [
-            Challenge(ChallengeId('1'), ChallengeTitle('a')),
-            Challenge(ChallengeId('2'), ChallengeTitle('b'))
+            Challenge(ChallengeId('dfb7a1a1-4d78-4575-b035-3ec2fa6097e9'), ChallengeTitle('a')),
+            Challenge(ChallengeId('b4d51f9e-cc29-4e52-a351-4156149b3ef1'), ChallengeTitle('b'))
         ]
         return repository
 
@@ -23,4 +23,6 @@ class TestGammaApplicationChallengeList(unittest.TestCase):
         service = ChallengeList(ChallengeMockRepository.ok())
         data = service.excecute()
 
-        self.assertEqual([{'id': '1', 'title': 'a'}, {'id': '2', 'title': 'b'}], data)
+        self.assertEqual([
+            {'id': 'dfb7a1a1-4d78-4575-b035-3ec2fa6097e9', 'title': 'a'},
+            {'id': 'b4d51f9e-cc29-4e52-a351-4156149b3ef1', 'title': 'b'}], data)

@@ -1,9 +1,9 @@
 from abc import abstractmethod, ABC
 
-from src.shared.domain.types import TypeString
+from src.shared.domain.types import TypeString, TypeId
 
 
-class ChallengeId(TypeString):
+class ChallengeId(TypeId):
     pass
 
 
