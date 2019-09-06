@@ -2,6 +2,7 @@
 
 import unittest
 
+from tests.unit.gamma.challenge_test import TestGammaApplicationChallengeList
 from tests.unit.shared.exception_test import TestSharedDomainException
 from tests.unit.shared.validator import TestSharedDomainValidatorIsNone, TestSharedDomainValidatorString, \
     TestSharedDomainValidatorInteger, TestSharedDomainValidatorIntegerPositive, TestSharedDomainValidatorDate
@@ -16,6 +17,8 @@ def suite():
     suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorIntegerPositive))
     suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorDate))
     suite.addTests(loader.loadTestsFromModule(TestSharedDomainException))
+
+    suite.addTests(loader.loadTestsFromModule(TestGammaApplicationChallengeList))
     return suite
 
 

@@ -1,5 +1,3 @@
-import datetime
-
 from src.gamma.challenge.domain.challenge import Challenge, ChallengeRepository
 
 
