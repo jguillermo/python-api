@@ -5,7 +5,7 @@ from src.shared.exception import BadRequest
 
 def is_not_none(value, error_message='el valor no puede ser nulo'):
     if value is None:
-        raise BadRequest(error_message)
+        raise BadRequest(4010, error_message)
     return value
 
 
@@ -24,9 +24,9 @@ def string_validator(value, error_message='ingrese un string valido'):
         if data_valid is None:
             return ''
         if len(data_valid) > 10 and data_valid[0] == '<' and data_valid[-1] == '>' and value.__class__ in data_valid:
-            raise BadRequest('no se puede convertir el string')
+            raise BadRequest(4010, 'no se puede convertir el string')
     except Exception as e:
-        raise BadRequest(error_message)
+        raise BadRequest(4010, error_message)
 
     return data_valid
 
@@ -36,13 +36,13 @@ def integer_validator(value, error_message='ingrese un número válido'):
         return None
 
     if isinstance(value, bool):
-        raise BadRequest(error_message)
+        raise BadRequest(4010, error_message)
 
     try:
         data_valid = validators.integer(value, coerce_value=True, allow_empty=True)
 
     except Exception as e:
-        raise BadRequest(error_message)
+        raise BadRequest(4010, error_message)
 
     return data_valid
 
@@ -52,13 +52,13 @@ def integer_positive(value, error_message='el numero debe ser mayor a cero'):
         data_valid = integer_validator(value)
 
     except Exception as e:
-        raise BadRequest(error_message)
+        raise BadRequest(4010, error_message)
 
     if data_valid is None:
         return None
 
     if data_valid <= 0:
-        raise BadRequest(error_message)
+        raise BadRequest(4010, error_message)
 
     return data_valid
 
@@ -71,6 +71,6 @@ def date_validator(value, error_message='ingrese una fecha válida'):
         data_valid = validators.date(value, coerce_value=True, allow_empty=True)
 
     except Exception as e:
-        raise BadRequest(error_message)
+        raise BadRequest(4010, error_message)
 
     return data_valid

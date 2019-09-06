@@ -1,30 +1,21 @@
-
-
-
 class AppError(Exception):
     """Clase base para excepciones en el módulo."""
 
-    def __init__(self, *args: object, **kwargs: object) -> None:
-        super().__init__(*args, **kwargs)
+    def __init__(self, code: int, message: str, status_code: int):
+        self.code = code
+        self.message = message
+        self.status_code = status_code
 
 
 class BadRequest(AppError):
     """Clase base para excepciones en el módulo."""
-    pass
+
+    def __init__(self, code: int, message: str, status_code: int = 401):
+        super().__init__(code, message, status_code)
+
 
 class UnauthorizedRequest(AppError):
     """Clase base para excepciones en el módulo."""
-    pass
 
-
-class Example(AppError):
-    """Excepción lanzada por errores en las entradas.
-
-    Atributos:
-        expresion -- expresión de entrada en la que ocurre el error
-        mensaje -- explicación del error
-    """
-
-    def __init__(self, expresion, mensaje):
-        self.expresion = expresion
-        self.mensaje = mensaje
+    def __init__(self, code: int = 4030, message: str = 'No tiens permiso', status_code: int = 403):
+        super().__init__(code, message, status_code)

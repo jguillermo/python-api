@@ -2,7 +2,7 @@
 
 import unittest
 
-
+from tests.unit.shared.exception_test import TestSharedDomainException
 from tests.unit.shared.validator import TestSharedDomainValidatorIsNone, TestSharedDomainValidatorString, \
     TestSharedDomainValidatorInteger, TestSharedDomainValidatorIntegerPositive, TestSharedDomainValidatorDate
 
@@ -15,6 +15,7 @@ def suite():
     suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorInteger))
     suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorIntegerPositive))
     suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorDate))
+    suite.addTests(loader.loadTestsFromModule(TestSharedDomainException))
     return suite
 
 
