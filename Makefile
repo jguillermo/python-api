@@ -89,6 +89,9 @@ install-lib: ## Connect to container for ssh protocol install with pip: make ins
 freeze: ## Connect to container for ssh protocol install with pip: make install-lib
 	make console a='pip freeze'
 
+coverage-view: ## Connect to container for ssh protocol install with pip: make install-lib
+	open ${PWD}/application/cover/index.html
+
 ## Migrate DB##
 db-upgrade: ## Execute migrate db : make db-upgrade
 	make console a='flask db upgrade'
