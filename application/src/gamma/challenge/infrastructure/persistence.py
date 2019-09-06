@@ -1,5 +1,5 @@
 from applications.db import db
-from src.gamma.challenge.domain.challenge import ChallengeRepository, Challenge
+from src.gamma.challenge.domain.challenge import ChallengeRepository, Challenge, ChallengeId, ChallengeTitle
 
 
 class ChallengeModel(db.Model):
@@ -22,12 +22,12 @@ class ChallengeRepositoryMysql(ChallengeRepository):
             data.append(self._model_to_entity(item))
         return data
 
-    def find_by_id(self, id):
-        challenge_model = ChallengeModel.query.filter_by(id=id).first()
+    def find_by_id(self, id: ChallengeId):
+        challenge_model = ChallengeModel.query.filter_by(id=id.value()).first()
         return self._model_to_entity(challenge_model)
 
     def _model_to_entity(self, model: ChallengeModel) -> Challenge:
         if model is None:
             return None
 
-        return Challenge(model.id, model.title)
+        return Challenge.create(ChallengeId(model.id), ChallengeTitle(model.title))

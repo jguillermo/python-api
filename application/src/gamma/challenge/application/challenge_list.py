@@ -18,6 +18,6 @@ class ChallengeList:
     @classmethod
     def _process(cls, challenge: Challenge):
         return {
-            'id': challenge.id,
-            'title': challenge.title
+            'id': challenge.id.value(),
+            'title': challenge.title.value()
         }
