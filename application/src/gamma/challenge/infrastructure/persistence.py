@@ -12,8 +12,13 @@ class ChallengeModel(db.Model):
         self.name = name
         self.title = title
 
+    def persist(self) -> None:
+        db.session.add(self)
+        db.session.commit()
 
 class ChallengeRepositoryMysql(ChallengeRepository):
+
+
 
     def find_all(self):
         challenge_models = ChallengeModel.query.filter_by()
@@ -31,3 +36,8 @@ class ChallengeRepositoryMysql(ChallengeRepository):
             return None
 
         return Challenge.create(ChallengeId(model.id), ChallengeTitle(model.title))
+
+    def persist(self, challenge: Challenge):
+        challenge_model = ChallengeModel(challenge.id.value(),challenge.title.value())
+        challenge_model.persist()
+        return True

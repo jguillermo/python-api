@@ -29,3 +29,7 @@ class ChallengeRepository(ABC):
     @abstractmethod
     def find_by_id(self, id: ChallengeId):
         pass
+
+    @abstractmethod
+    def persist(self, challenge: Challenge):
+        pass
