@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from src.gamma.challenge.application.challenge_create import ChallengeCreate
 from src.gamma.challenge.application.challenge_list import ChallengeList
-from src.gamma.challenge.infrastructure.persistence import ChallengeRepositoryMysql
+from src.gamma.challenge.infrastructure.persistence import ChallengeRepositorySql
 
 
 class GammaRepositoryFactory:
     @staticmethod
     def challenge_repository():
-        return ChallengeRepositoryMysql()
+        return ChallengeRepositorySql()
 
 
 class GammaServiceFactory:
