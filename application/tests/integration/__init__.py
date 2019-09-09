@@ -14,7 +14,7 @@ app.config["PROPAGATE_EXCEPTIONS"] = True
 
 api = Api(app)
 db.init_app(app)
-
-db.create_all()
-
 add_module_gamma(api)
+
+with app.app_context():
+    db.create_all()

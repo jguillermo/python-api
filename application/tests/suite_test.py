@@ -15,18 +15,20 @@ def suite():
     suite = unittest.TestSuite()
 
 
-    # suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorIsNone))
-    # suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorString))
-    # suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorInteger))
-    # suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorIntegerPositive))
-    # suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorDate))
-    # suite.addTests(loader.loadTestsFromModule(TestSharedDomainException))
-    #
-    # suite.addTests(loader.loadTestsFromModule(TestGammaApplicationChallengeList))
-    # suite.addTests(loader.loadTestsFromModule(TestGammaApplicationChallengeCreate))
+    suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorIsNone))
+    suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorString))
+    suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorInteger))
+    suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorIntegerPositive))
+    suite.addTests(loader.loadTestsFromModule(TestSharedDomainValidatorDate))
+    suite.addTests(loader.loadTestsFromModule(TestSharedDomainException))
+
+    suite.addTests(loader.loadTestsFromModule(TestGammaApplicationChallengeList))
+    suite.addTests(loader.loadTestsFromModule(TestGammaApplicationChallengeCreate))
 
     # Integration test
     suite.addTests(loader.loadTestsFromModule(ChallengeRepositorySqlTest))
+
+
     return suite
 
 
